@@ -12,21 +12,22 @@
             width: 100%;
             height: 100vh;
             background: rgba(0, 0, 0, 0.6);
-            z-index: 10000;
-            position: fixed; 
-            top: 0; 
-            left: 0; 
+            position: fixed;
+            top: 0;
+            left: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            display: none;
+          display: none;
+            z-index: 1000;
         }
         .user_modal {
-            width: 600px;
-            height: auto;
-            background-color: #fff; 
-            padding: 20px; 
-            border-radius: 8px; 
+            width: 500px;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
         .container {
             width: 100%;
@@ -34,167 +35,161 @@
             justify-content: space-around;
             align-items: flex-start;
             padding: 30px;
-            z-index: 1;
         }
         .dynamic-content {
             margin-top: 20px;
         }
         .container2 {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    background-color: #fff;
-}
-
-/* Toolbar */
-.toolbar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.toolbar button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-}
-
-/* Layout Styles */
-.main-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.column-container {
-    width: 48%;
-    border: 1px solid #000;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-.column-container h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
-
-/* Component Styles */
-.component {
-    border: 1px solid #000;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #f0f0f0;
-}
-
-.component h3 {
-    margin-top: 0;
-    font-size: 1em;
-}
-
-.component p {
-    margin: 5px 0;
-    font-size: 0.9em;
-}
-
-.controls {
-    display: flex;
-    justify-content: center;
-}
-
-.controls button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-}
-
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        .toolbar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .toolbar button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .toolbar button:hover {
+            background-color: #d0d0d0;
+        }
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .column-container {
+            width: 48%;
+            border: 1px solid #000;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .column-container h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .component {
+            border: 1px solid #000;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f0f0f0;
+        }
+        .component h3 {
+            margin-top: 0;
+            font-size: 1em;
+        }
+        .component p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+        }
+        .controls button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .controls button:hover {
+            background-color: #d0d0d0;
+        }
+       
     </style>
-</head>
-<body>
-
-    <div class="container2">
-        <div class="toolbar">
-            <button id="addContainer">+</button>
-            <button id="removeContainer">-</button>
-        </div>
-
-        <div id="mainContent" class="main-content">
-          
-        </div>
-
-        <div id="result2">
-          
-        </div>
-    </div>
-   <br>
-
-    <div class="container" id="conta">
-        <div class="card">
-            <h5 class="card-header">Open</h5>
-            <div class="card-body">
-                <a href="#" class="btn btn-primary" id="btn1">Add Task</a>
+    
+    <body>
+        <div class="container2">
+            <div class="toolbar">
+                <button id="addContainer">+</button>
+                <button id="removeContainer">-</button>
             </div>
-            <ol id="open-list"></ol>
-        </div>
-        <div class="card">
-            <h5 class="card-header">Pending</h5>
-            <div class="card-body">
-                <a href="#" class="btn btn-primary" id="btn2">Add Task</a>
+    
+            <div id="mainContent" class="main-content">
+                <!-- Dynamic content will be added here -->
             </div>
-            <ol id="pending-list"></ol>
+    
+            <div id="result2"></div>
         </div>
-        <div class="card">
-            <h5 class="card-header">In Progress</h5>
-            <div class="card-body">
-                <a href="#" class="btn btn-primary" id="btn3">Add Task</a>
-            </div>
-            <ol id="inproge-list"></ol>
-        </div>
-        <div class="card">
-            <h5 class="card-header">Complete</h5>
-            <div class="card-body">
-                <a href="#" class="btn btn-primary" id="btn4">Add Task</a>
-            </div>
-            <ol id="complete-list"></ol>
-        </div>
-    </div>
-
-    <div class="modul" id="modul">
-        <div class="user_modal">
-            <form id="task-form">
-                <div class="mb-3">
-                    <select name="status" id="select" class="form-select" aria-label="Default select example">
-                        <option value="tans" hidden>Select</option>
-                        <option value="open">Open</option>
-                        <option value="pending">Pending</option>
-                        <option value="inproge">In Progress</option>
-                        <option value="complete">Complete</option>
-                   </select>
+    
+        <br>
+    
+        <div class="container" id="conta">
+            <div class="card">
+                <h5 class="card-header">Open</h5>
+                <div class="card-body">
+                    <a href="#" class="btn btn-primary" id="btn1">Add Task</a>
                 </div>
-                <div class="mb-3">
-                    <label for="task-input" class="form-label">Enter Task</label>
-                    <input type="text" name="task" class="form-control" id="task-input" placeholder="Enter task description">
+                <ol id="open-list"></ol>
+            </div>
+            <div class="card">
+                <h5 class="card-header">Pending</h5>
+                <div class="card-body">
+                    <a href="#" class="btn btn-primary" id="btn2">Add Task</a>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-danger" id="close-btn">Close</button>
-            </form>
+                <ol id="pending-list"></ol>
+            </div>
+            <div class="card">
+                <h5 class="card-header">In Progress</h5>
+                <div class="card-body">
+                    <a href="#" class="btn btn-primary" id="btn3">Add Task</a>
+                </div>
+                <ol id="inproge-list"></ol>
+            </div>
+            <div class="card">
+                <h5 class="card-header">Complete</h5>
+                <div class="card-body">
+                    <a href="#" class="btn btn-primary" id="btn4">Add Task</a>
+                </div>
+                <ol id="complete-list"></ol>
+            </div>
         </div>
-    </div> 
-
-
+    
+        <div class="modul" id="modul">
+            <div class="user_modal">
+                <form id="task-form">
+                    <div class="mb-3">
+                        <select name="status" id="select" class="form-select" aria-label="Default select example">
+                            <option value="tans" hidden>Select</option>
+                            <option value="open">Open</option>
+                            <option value="pending">Pending</option>
+                            <option value="inproge">In Progress</option>
+                            <option value="complete">Complete</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="task-input" class="form-label">Enter Task</label>
+                        <input type="text" name="task" class="form-control" id="task-input" placeholder="Enter task description">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-danger" id="close-btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    
   
     
-     <script type="module" src="./app.js"></script>
+     <script src="./app.js"></script>
     
 </body>
 </html>

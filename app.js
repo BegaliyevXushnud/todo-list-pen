@@ -1,4 +1,3 @@
-
 const modul = document.getElementById("modul");
 const closeModalBtn = document.getElementById("close-btn");
 const taskForm = document.getElementById("task-form");
@@ -6,6 +5,7 @@ const openList = document.getElementById("open-list");
 const pendingList = document.getElementById("pending-list");
 const inprogeList = document.getElementById("inproge-list");
 const completeList = document.getElementById("complete-list");
+
 
 let todos = JSON.parse(localStorage.getItem("todos")) || [
     { status: "open", tasks: [] },
@@ -84,7 +84,7 @@ function addTask() {
         return;
     }
 
-    if (form.editIndex) {
+    if (form.editIndex !== undefined) {
         const [statusIndex, taskIndex] = form.editIndex.split("-").map(Number);
         todos[statusIndex].tasks[taskIndex] = task;
     } else {
@@ -118,20 +118,10 @@ function saveToStorage() {
     localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-
-
-
-
-
-
-
-
-
+// Component creation logic
 
 const addContainerButton = document.getElementById('addContainer');
 const removeContainerButton = document.getElementById('removeContainer');
-
-
 const mainContent = document.getElementById('mainContent');
 
 let containerCount = 0;
@@ -140,14 +130,11 @@ function createComponent(title, count) {
     const component = document.createElement('div');
     component.classList.add('component');
 
-
     const componentTitle = document.createElement('h3');
     componentTitle.textContent = title;
 
-
     const countDisplay = document.createElement('p');
     countDisplay.innerHTML = `Hisob: <span>${count}</span>`;
-
 
     const controls = document.createElement('div');
     controls.classList.add('controls');
@@ -184,7 +171,6 @@ function createContainer() {
     const containerTitle = document.createElement('h2');
     containerTitle.textContent = `${containerCount}-komponent`;
 
-    
     const componentA = createComponent('A komponent', 0);
     const componentB = createComponent('B komponent', 0);
 
@@ -194,7 +180,6 @@ function createContainer() {
 
     return container;
 }
-
 
 addContainerButton.addEventListener('click', () => {
     const newContainer = createContainer();
@@ -207,22 +192,3 @@ removeContainerButton.addEventListener('click', () => {
         containerCount--;
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
